@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:DT.Xamarin.AntMedia.WebRTC.Forms;assembly=DT.Xamarin.AntMedia.WebRTC.Forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DT.WebRTC.Forms.MainPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <local:AntWebRTCView x:Name="AntFrame" Grid.Column="0" Grid.ColumnSpan="3" RenderingMode="ScaleAspectFit" WebRTCMode="Publish" Grid.Row="1"/>
+        <Button x:Name="SomeActionButton" Text="Start" Clicked="SomeActionButton_Clicked" Grid.Column="1" Grid.Row="2"/>
+        <Button x:Name="MuteAudioButton" Text="Mute Audio" Clicked="ToggleAudioButton_Clicked" Grid.Column="0" Grid.Row="0"/>
+        <Button x:Name="MuteVideoButton" Text="Mute Video" Clicked="ToggleVideoButton_Clicked" Grid.Column="1" Grid.Row="0"/>
+        <Button x:Name="SwitchCameraButton" Text="Switch Camera" Clicked="SwitchCameraButton_Clicked" Grid.Column="2" Grid.Row="0"/>
+    </Grid>
+</ContentPage>

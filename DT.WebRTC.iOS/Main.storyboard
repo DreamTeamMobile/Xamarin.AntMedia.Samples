@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="018-V1-2Au">
+                                <rect key="frame" x="40" y="44" width="334" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="334" id="AWh-LC-hva"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="P2P"/>
+                                    <segment title="Play"/>
+                                    <segment title="Publish"/>
+                                </segments>
+                                <color key="selectedSegmentTintColor" systemColor="systemYellowColor"/>
+                                <connections>
+                                    <action selector="modeChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Hrq-qw-F85"/>
+                                </connections>
+                            </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="seU-fp-oP8">
+                                <rect key="frame" x="0.0" y="75" width="414" height="757"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FgS-3a-DIF" userLabel="Fix">
+                                <rect key="frame" x="0.0" y="832" width="414" height="0.0"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="Na9-7K-anq"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qgH-9X-6Ug">
+                                <rect key="frame" x="172" y="822" width="70" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="Do Action">
+                                    <color key="titleShadowColor" systemColor="systemPinkColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="doAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="udF-8g-foM"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="seU-fp-oP8" secondAttribute="trailing" id="6MM-df-zBU"/>
+                            <constraint firstItem="qgH-9X-6Ug" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6ld-bT-atz"/>
+                            <constraint firstItem="FgS-3a-DIF" firstAttribute="bottom" secondItem="qgH-9X-6Ug" secondAttribute="top" constant="10" id="Idz-qZ-y79"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="qgH-9X-6Ug" secondAttribute="bottom" constant="10" id="K4E-Lj-ptV"/>
+                            <constraint firstItem="seU-fp-oP8" firstAttribute="bottom" secondItem="FgS-3a-DIF" secondAttribute="top" id="LAq-Ij-xtD"/>
+                            <constraint firstAttribute="trailing" secondItem="FgS-3a-DIF" secondAttribute="trailing" id="LCC-wI-Oai"/>
+                            <constraint firstItem="FgS-3a-DIF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="TN4-9E-dhR"/>
+                            <constraint firstItem="seU-fp-oP8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="eJn-nl-Yfs"/>
+                            <constraint firstItem="018-V1-2Au" firstAttribute="bottom" secondItem="seU-fp-oP8" secondAttribute="top" id="vqp-U3-2x4"/>
+                            <constraint firstItem="018-V1-2Au" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wEu-TV-UnN"/>
+                            <constraint firstItem="y3c-jy-aDJ" firstAttribute="bottom" secondItem="018-V1-2Au" secondAttribute="top" id="xvt-sZ-Nry"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="actionButton" destination="qgH-9X-6Ug" id="ygF-Eo-mxs"/>
+                        <outlet property="fullContainer" destination="seU-fp-oP8" id="Q26-u8-a8A"/>
+                        <outlet property="modeSegments" destination="018-V1-2Au" id="JTv-rD-UMW"/>
+                        <outlet property="secondaryContainer" destination="FgS-3a-DIF" id="VpI-dF-Nqe"/>
+                        <outlet property="secondaryHeight" destination="Na9-7K-anq" id="lYH-H1-009"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
