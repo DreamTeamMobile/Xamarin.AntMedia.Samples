@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DT.Configuration;
+﻿using DT.Configuration;
 using Xamarin.Forms;
 
 namespace DT.WebRTC.Forms
@@ -18,7 +12,14 @@ namespace DT.WebRTC.Forms
 
         void SomeActionButton_Clicked(System.Object sender, System.EventArgs e)
         {
-            AntFrame.Init(InitialData.SERVER_URL, InitialData.Token);
+            if (AntFrame.IsPublishing || AntFrame.IsPlaying)
+            {
+                AntFrame.Stop();
+            }
+            else
+            {
+                AntFrame.Init(InitialData.SERVER_URL, InitialData.Token);
+            }
         }
 
         void ToggleAudioButton_Clicked(System.Object sender, System.EventArgs e)
@@ -36,24 +37,45 @@ namespace DT.WebRTC.Forms
             AntFrame.SwitchCamera();
         }
 
-        void AntFrame_PlayStarted(System.Object sender, System.EventArgs e)
+        void AntFrame_Refresh(System.Object sender, System.EventArgs e)
         {
-            SomeActionButton.Text = "Stop Playing";
+            RefreshState();
         }
 
-        void AntFrame_PlayFinished(System.Object sender, System.EventArgs e)
+        void RefreshState()
         {
-            SomeActionButton.Text = "Start Playing";
+            switch (AntFrame.WebRTCMode)
+            {
+                case Xamarin.AntMedia.WebRTC.Forms.AntWebRTCMode.Play:
+                    SomeActionButton.Text = string.Format("{0} Playing", AntFrame.IsPlaying ? "Stop" : "Start");
+                    PublishModeButton.IsVisible = !AntFrame.IsPlaying;
+                    PlayModeButton.IsVisible = false;
+                    break;
+                case Xamarin.AntMedia.WebRTC.Forms.AntWebRTCMode.Publish:
+                    SomeActionButton.Text = string.Format("{0} Publishing", AntFrame.IsPublishing ? "Stop" : "Start");
+                    PlayModeButton.IsVisible = !AntFrame.IsPublishing;
+                    PublishModeButton.IsVisible = false;
+                    break;
+            }
         }
 
-        void AntFrame_PublishStarted(System.Object sender, System.EventArgs e)
+        void PublishModeButton_Clicked(System.Object sender, System.EventArgs e)
         {
-            SomeActionButton.Text = "Stop Publish";
+            if (!AntFrame.IsPlaying && !AntFrame.IsPublishing)
+                AntFrame.WebRTCMode = Xamarin.AntMedia.WebRTC.Forms.AntWebRTCMode.Publish;
+            RefreshState();
         }
 
-        void AntFrame_PublishFinished(System.Object sender, System.EventArgs e)
+        void PlayModeButton_Clicked(System.Object sender, System.EventArgs e)
         {
-            SomeActionButton.Text = "Start Publish";
+            if (!AntFrame.IsPlaying && !AntFrame.IsPublishing)
+                AntFrame.WebRTCMode = Xamarin.AntMedia.WebRTC.Forms.AntWebRTCMode.Play;
+            RefreshState();
+        }
+
+        void AntFrame_Error(System.Object sender, DT.Xamarin.AntMedia.WebRTC.Forms.ErrorEventArgs e)
+        {
+            DisplayAlert("Error", e.Message, "Ok");
         }
     }
 }
