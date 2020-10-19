@@ -150,7 +150,7 @@
     <PackageReference Include="Xamarin.Forms" Version="4.8.0.1560" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
     <PackageReference Include="DT.Xamarin.AntMedia.WebRTC.Forms">
-      <Version>0.9.1</Version>
+      <Version>0.9.2</Version>
     </PackageReference>
     <PackageReference Include="DT.Xamarin.AntMedia.WebRTC.iOS">
       <Version>0.9.1</Version>

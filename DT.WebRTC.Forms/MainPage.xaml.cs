@@ -35,5 +35,25 @@ namespace DT.WebRTC.Forms
         {
             AntFrame.SwitchCamera();
         }
+
+        void AntFrame_PlayStarted(System.Object sender, System.EventArgs e)
+        {
+            SomeActionButton.Text = "Stop Playing";
+        }
+
+        void AntFrame_PlayFinished(System.Object sender, System.EventArgs e)
+        {
+            SomeActionButton.Text = "Start Playing";
+        }
+
+        void AntFrame_PublishStarted(System.Object sender, System.EventArgs e)
+        {
+            SomeActionButton.Text = "Stop Publish";
+        }
+
+        void AntFrame_PublishFinished(System.Object sender, System.EventArgs e)
+        {
+            SomeActionButton.Text = "Start Publish";
+        }
     }
 }

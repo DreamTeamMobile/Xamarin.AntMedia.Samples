@@ -11,10 +11,22 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <local:AntWebRTCView x:Name="AntFrame" Grid.Column="0" Grid.ColumnSpan="3" RenderingMode="ScaleAspectFit" WebRTCMode="Publish" Camera="Front" Grid.Row="1"/>
+        <local:AntWebRTCView
+            x:Name="AntFrame"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Grid.Row="1"
+            RenderingMode="ScaleAspectFit"
+            WebRTCMode="Publish"
+            Camera="Front"
+            PlayStarted="AntFrame_PlayStarted"
+            PlayFinished="AntFrame_PlayFinished"
+            PublishStarted="AntFrame_PublishStarted"
+            PublishFinished="AntFrame_PublishFinished"
+            />
         <Button x:Name="SomeActionButton" Text="Start" Clicked="SomeActionButton_Clicked" Grid.Column="1" Grid.Row="2"/>
-        <Button x:Name="MuteAudioButton" Text="Mute Audio" Clicked="ToggleAudioButton_Clicked" Grid.Column="0" Grid.Row="0"/>
-        <Button x:Name="MuteVideoButton" Text="Mute Video" Clicked="ToggleVideoButton_Clicked" Grid.Column="1" Grid.Row="0"/>
+        <Button x:Name="MuteAudioButton" IsVisible="{Binding Source={x:Reference AntFrame}, Path=IsPlaying}" Text="Mute Audio" Clicked="ToggleAudioButton_Clicked" Grid.Column="0" Grid.Row="0"/>
+        <Button x:Name="MuteVideoButton" IsVisible="{Binding Source={x:Reference AntFrame}, Path=IsPublishing}" Text="Mute Video" Clicked="ToggleVideoButton_Clicked" Grid.Column="1" Grid.Row="0"/>
         <Button x:Name="SwitchCameraButton" Text="Switch Camera" Clicked="SwitchCameraButton_Clicked" Grid.Column="2" Grid.Row="0"/>
     </Grid>
 </ContentPage>

@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using DT.Xamarin.AntMedia.WebRTC.Forms;
+using DT.Xamarin.AntMedia.WebRTC.Forms.iOS;
 using Foundation;
 using UIKit;
+using Xamarin.Forms;
+
+[assembly: ExportRenderer(typeof(AntWebRTCView), typeof(AntWebRTCViewRenderer))]
 
 namespace DT.WebRTC.Forms.iOS
 {
@@ -24,7 +28,6 @@ namespace DT.WebRTC.Forms.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
-
             return base.FinishedLaunching(app, options);
         }
     }
