@@ -98,6 +98,10 @@
       <Project>{47E12A6F-11A4-4ADF-8C21-C147250D7339}</Project>
       <Name>DT.WebRTC.Forms</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DT.Configuration\DT.Configuration.csproj">
+      <Project>{BE2D0F7E-80A9-4953-B929-5ECB54F3774B}</Project>
+      <Name>DT.Configuration</Name>
+    </ProjectReference>
   </ItemGroup>
  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
