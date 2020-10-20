@@ -1,10 +1,11 @@
 # Xamarin Forms WebRTC Sample app
 
-Please follow our [WiKi](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/wiki) to find information:
-
 * [Documentation](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/wiki/Xamarin-Forms-WebRTC)
 
 * [Step by Step Tutorial](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/wiki/Xamarin-Forms-WebRTC-Tutorial) how to add AntMedia WebRTC to Forms app
+
+### [Prerequisites](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/wiki/Prerequisites)
+  you need up running Ant Media Server, [detailed explanation here](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/wiki/Prerequisites)
 
 ### How to use nuget
 
@@ -95,4 +96,4 @@ Simple copy of AntMedia sample app with all basic video call functions:
 public const string SERVER_ADDRESS = "domain-name.com:5080";
 ```
 
-1. click **Run** button in Visual Studio.
+1. Set Froms.Android or Forms.iOS project as Startup Project, click **Run** button in Visual Studio.
