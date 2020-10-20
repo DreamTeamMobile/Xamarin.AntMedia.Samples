@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:DT.Xamarin.AntMedia.WebRTC.Forms;assembly=DT.Xamarin.AntMedia.WebRTC.Forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DT.WebRTC.Forms.MainPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:ant="clr-namespace:DT.Xamarin.AntMedia.WebRTC.Forms;assembly=DT.Xamarin.AntMedia.WebRTC.Forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DT.WebRTC.Forms.MainPage">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -11,7 +11,7 @@
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-        <local:AntWebRTCView
+        <ant:AntWebRTCView
             x:Name="AntFrame"
             Grid.Column="0"
             Grid.ColumnSpan="3"
