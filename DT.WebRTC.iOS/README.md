@@ -1,4 +1,4 @@
-Xamarin iOS Smaple app
+Xamarin iOS WebRTC Sample app
 
 Please follow our [WiKi](wiki) to find information:
 
