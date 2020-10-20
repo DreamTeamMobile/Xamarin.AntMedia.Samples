@@ -4,13 +4,13 @@ This Repository contains Sample Apps for Xamarin Bindings of Ant Media WebRTC An
 
 Also we have [WiKi](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/wiki) with all detailed information and step-by-step Tutorials for easy usage of our [Nuget packages](https://www.nuget.org/packages?q=antmedia+dreamteammobile):
 
-* Xamarin Android [![NuGet Packege](https://buildstats.info/nuget/DT.Xamarin.AntMedia.WebRTC.Android/)](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.Android/)
+* for Xamarin Android [![NuGet Packege](https://buildstats.info/nuget/DT.Xamarin.AntMedia.WebRTC.Android/)](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.Android/)
 <br>this is a full binding on native Android Ant Media Free WebRTC SDK, same namespaces so you can use [Ant Media documentation](https://github.com/ant-media/Ant-Media-Server/wiki/WebRTC-Android-SDK-Documentation) for that nuget
 
-* Xamarin iOS [![NuGet Package](https://buildstats.info/nuget/DT.Xamarin.AntMedia.WebRTC.iOS/)](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.iOS/)
+* for Xamarin iOS [![NuGet Package](https://buildstats.info/nuget/DT.Xamarin.AntMedia.WebRTC.iOS/)](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.iOS/)
 <br>this is a full binding on native iOS Ant Media Free WebRTC SDK, same namespaces so you can use [Ant Media documentation](https://github.com/ant-media/Ant-Media-Server/wiki/WebRTC-iOS-SDK-Guide) for that nuget
 
-* Xamarin Forms [![NuGet Package](https://buildstats.info/nuget/DT.Xamarin.AntMedia.WebRTC.Forms/)](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.Forms/)
+* for Xamarin Forms [![NuGet Package](https://buildstats.info/nuget/DT.Xamarin.AntMedia.WebRTC.Forms/)](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.Forms/)
 <br>this is more complicated, we make forms package which have theis own classes and special for Forms usage, visit [our wiki](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/wiki/Xamarin-Forms-WebRTC) for details
 
 ## Code in Repository
