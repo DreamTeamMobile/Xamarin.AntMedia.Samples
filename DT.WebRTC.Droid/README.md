@@ -25,9 +25,9 @@ Simple copy of AntMedia sample app with all basic video call functions:
 
 ### How to Run Sample
 
-1. Start from **[DT.Xamarin.AntMedia.Samples.sln](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/blob/main/DT.Xamarin.AntMedia.Samples.sln)**
+1. Start from **[..DT.Xamarin.AntMedia.Samples.sln](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/blob/main/DT.Xamarin.AntMedia.Samples.sln)**
 
-1. replace constant to your server addres in **[DT.Configuration/InitialData.cs](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/blob/main/DT.Configuration/InitialData.cs)**
+1. replace constant to your server addres in **[..DT.Configuration/InitialData.cs](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/blob/main/DT.Configuration/InitialData.cs)**
 
 ```
 public const string SERVER_ADDRESS = "domain-name.com:5080";
