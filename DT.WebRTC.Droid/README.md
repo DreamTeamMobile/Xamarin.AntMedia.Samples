@@ -11,7 +11,7 @@ Please follow our [WiKi](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Sam
 
 * then you can use 
   * our [Step by Step Xamarin Tutorial](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/wiki/Xamarin-Android-WebRTC-Tutorial)
-  * [Ant Media iOS Sample documentation](https://github.com/ant-media/Ant-Media-Server/wiki/WebRTC-Android-SDK-Guide)
+  * [Ant Media iOS Sample documentation](https://github.com/ant-media/Ant-Media-Server/wiki/WebRTC-Android-SDK-Documentation)
 
 ### What in sample
 
