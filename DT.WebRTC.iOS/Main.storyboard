@@ -20,13 +20,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="018-V1-2Au">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="018-V1-2Au">
                                 <rect key="frame" x="40" y="44" width="334" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="334" id="AWh-LC-hva"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="P2P"/>
+                                    <segment title="P2P" enabled="NO"/>
                                     <segment title="Play"/>
                                     <segment title="Publish"/>
                                 </segments>
@@ -56,17 +56,44 @@
                                     <action selector="doAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="udF-8g-foM"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hii-vD-kpX">
+                                <rect key="frame" x="50" y="95" width="78" height="30"/>
+                                <state key="normal" title="Mute Audio"/>
+                                <connections>
+                                    <action selector="muteAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fms-8w-MTQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lNG-I4-lTW">
+                                <rect key="frame" x="155" y="95" width="104" height="30"/>
+                                <state key="normal" title="Switch Camera"/>
+                                <connections>
+                                    <action selector="switchCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="78e-j3-Nfr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ica-ev-3Yq">
+                                <rect key="frame" x="285" y="95" width="79" height="30"/>
+                                <state key="normal" title="Mute Video"/>
+                                <connections>
+                                    <action selector="muteVideo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vTv-jM-BO3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="seU-fp-oP8" secondAttribute="trailing" id="6MM-df-zBU"/>
                             <constraint firstItem="qgH-9X-6Ug" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6ld-bT-atz"/>
+                            <constraint firstItem="lNG-I4-lTW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8QG-zL-cnx"/>
+                            <constraint firstItem="hii-vD-kpX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="50" id="HZk-Pj-aHF"/>
                             <constraint firstItem="FgS-3a-DIF" firstAttribute="bottom" secondItem="qgH-9X-6Ug" secondAttribute="top" constant="10" id="Idz-qZ-y79"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="qgH-9X-6Ug" secondAttribute="bottom" constant="10" id="K4E-Lj-ptV"/>
                             <constraint firstItem="seU-fp-oP8" firstAttribute="bottom" secondItem="FgS-3a-DIF" secondAttribute="top" id="LAq-Ij-xtD"/>
                             <constraint firstAttribute="trailing" secondItem="FgS-3a-DIF" secondAttribute="trailing" id="LCC-wI-Oai"/>
+                            <constraint firstItem="hii-vD-kpX" firstAttribute="top" secondItem="018-V1-2Au" secondAttribute="bottom" constant="20" id="Pi9-bI-lWa"/>
                             <constraint firstItem="FgS-3a-DIF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="TN4-9E-dhR"/>
+                            <constraint firstAttribute="trailing" secondItem="Ica-ev-3Yq" secondAttribute="trailing" constant="50" id="aGE-YE-LNH"/>
+                            <constraint firstItem="lNG-I4-lTW" firstAttribute="top" secondItem="018-V1-2Au" secondAttribute="bottom" constant="20" id="b8q-1w-0wX"/>
                             <constraint firstItem="seU-fp-oP8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="eJn-nl-Yfs"/>
+                            <constraint firstItem="Ica-ev-3Yq" firstAttribute="top" secondItem="018-V1-2Au" secondAttribute="bottom" constant="20" id="p0U-M4-kNC"/>
                             <constraint firstItem="018-V1-2Au" firstAttribute="bottom" secondItem="seU-fp-oP8" secondAttribute="top" id="vqp-U3-2x4"/>
                             <constraint firstItem="018-V1-2Au" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wEu-TV-UnN"/>
                             <constraint firstItem="y3c-jy-aDJ" firstAttribute="bottom" secondItem="018-V1-2Au" secondAttribute="top" id="xvt-sZ-Nry"/>
@@ -76,8 +103,11 @@
                         <outlet property="actionButton" destination="qgH-9X-6Ug" id="ygF-Eo-mxs"/>
                         <outlet property="fullContainer" destination="seU-fp-oP8" id="Q26-u8-a8A"/>
                         <outlet property="modeSegments" destination="018-V1-2Au" id="JTv-rD-UMW"/>
+                        <outlet property="muteAudioButton" destination="hii-vD-kpX" id="Ud0-LG-OdK"/>
+                        <outlet property="muteVideoButton" destination="Ica-ev-3Yq" id="ukQ-9Z-f0c"/>
                         <outlet property="secondaryContainer" destination="FgS-3a-DIF" id="VpI-dF-Nqe"/>
                         <outlet property="secondaryHeight" destination="Na9-7K-anq" id="lYH-H1-009"/>
+                        <outlet property="switchCameraButton" destination="lNG-I4-lTW" id="qV6-sd-wet"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

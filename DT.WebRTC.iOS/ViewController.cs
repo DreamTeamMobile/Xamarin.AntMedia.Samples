@@ -7,13 +7,13 @@ namespace DT.WebRTC.iOS
 {
     public partial class ViewController : UIViewController, IAntMediaClientDelegate
     {
-        protected AntMediaClient playClient = new AntMediaClient();
+        protected AntMediaClient webRtcClient = new AntMediaClient();
         public bool IsStreamActive = false;
 
         /**
         * Mode can Publish, Play or P2P
         */
-        protected AntMediaClientMode clientMode = AntMediaClientMode.Join;
+        protected AntMediaClientMode clientMode = AntMediaClientMode.Publish;
 
         public ViewController(IntPtr handle) : base(handle)
         {
@@ -22,33 +22,58 @@ namespace DT.WebRTC.iOS
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            updateButtonName();
+            refreshButtons();
+            ReInitWebRTC();
         }
 
-        public override void DidReceiveMemoryWarning()
+        protected void ReInitWebRTC()
         {
-            base.DidReceiveMemoryWarning();
-        }
+            if(webRtcClient != null)
+            {
+                Stop();
+            }
+            webRtcClient.Init();
+            webRtcClient.WeakDelegate = this;
+            webRtcClient.SetDebug(true);
+            webRtcClient.SetOptionsWithUrl(InitialData.SERVER_URL, InitialData.DefaultStream, InitialData.Token, clientMode, enableDataChannel: true);
 
-        public override void ViewDidAppear(bool animated)
-        {
-            base.ViewDidAppear(animated);
+            switch (clientMode)
+            {
+                //P2P not tested
+                //case AntMediaClientMode.Join:
+                //    var small = new UIView(new CoreGraphics.CGRect(0, 0, 160, 240));
+                //    secondaryHeight.Constant = 240;
+                //    secondaryContainer.AddSubview(small);
+                //    secondaryContainer.BackgroundColor = UIColor.LightGray;
+                //    webRtcClient.SetLocalViewWithContainer(small, UIViewContentMode.ScaleAspectFit);
+                //    webRtcClient.SetRemoteViewWithRemoteContainer(fullContainer, UIViewContentMode.ScaleAspectFit);
+                //    break;
+                case AntMediaClientMode.Play:
+                    secondaryHeight.Constant = 0;
+                    secondaryContainer.BackgroundColor = UIColor.Clear;
+                    webRtcClient.SetRemoteViewWithRemoteContainer(fullContainer, UIViewContentMode.ScaleAspectFit);
+                    break;
+                case AntMediaClientMode.Publish:
+                    webRtcClient.SetCameraPositionWithPosition(AVFoundation.AVCaptureDevicePosition.Front);
+                    webRtcClient.SetLocalViewWithContainer(fullContainer, UIViewContentMode.ScaleAspectFit);
+                    webRtcClient.SetVideoEnableWithEnable(true);
+                    break;
+            }
+
+            webRtcClient.InitPeerConnection();
         }
 
         partial void modeChanged(NSObject sender)
         {
             clientMode = (AntMediaClientMode)(long)((nint)modeSegments.SelectedSegment + 1);
-            if (IsStreamActive)
-            {
-                Stop();
-            }
-            updateButtonName();
+            ReInitWebRTC();
+            refreshButtons();
         }
 
         private void Stop()
         {
             IsStreamActive = false;
-            playClient.Stop();
+            webRtcClient.Stop();
             foreach (var container in secondaryContainer.Subviews)
             {
                 container.RemoveFromSuperview();
@@ -58,54 +83,42 @@ namespace DT.WebRTC.iOS
             secondaryContainer.BackgroundColor = UIColor.Clear;
         }
 
+        partial void muteAudio(NSObject sender)
+        {
+            webRtcClient.ToggleAudio();
+        }
+
+        partial void muteVideo(NSObject sender)
+        {
+            webRtcClient.ToggleVideo();
+        }
+
+        partial void switchCamera(NSObject sender)
+        {
+            webRtcClient.SwitchCamera();
+        }
+
         partial void doAction(NSObject sender)
         {
             BeginInvokeOnMainThread(() =>
             {
                 if (IsStreamActive)
                 {
-                    Stop();
+                    ReInitWebRTC();
                 }
                 else
                 {
                     IsStreamActive = true;
-                    playClient.Init();
-                    playClient.WeakDelegate = this;
-                    playClient.SetDebug(true);
-                    playClient.SetOptionsWithUrl(InitialData.SERVER_URL, InitialData.DefaultStream, InitialData.Token, clientMode, enableDataChannel: true);
-                    var small = new UIView(new CoreGraphics.CGRect(0, 0, 160, 240));
-                    switch (clientMode)
-                    {
-                        case AntMediaClientMode.Join:
-                            secondaryHeight.Constant = 240;
-                            secondaryContainer.AddSubview(small);
-                            secondaryContainer.BackgroundColor = UIColor.LightGray;
-                            playClient.SetLocalViewWithContainer(small, UIViewContentMode.ScaleAspectFit);
-                            playClient.SetRemoteViewWithRemoteContainer(fullContainer, UIViewContentMode.ScaleAspectFit);
-                            break;
-                        case AntMediaClientMode.Play:
-                            secondaryHeight.Constant = 0;
-                            secondaryContainer.BackgroundColor = UIColor.Clear;
-                            playClient.SetRemoteViewWithRemoteContainer(fullContainer, UIViewContentMode.ScaleAspectFit);
-                            break;
-                        case AntMediaClientMode.Publish:
-                            secondaryHeight.Constant = 240;
-                            secondaryContainer.BackgroundColor = UIColor.LightGray;
-                            secondaryContainer.AddSubview(small);
-                            playClient.SetCameraPositionWithPosition(AVFoundation.AVCaptureDevicePosition.Front);
-                            playClient.SetTargetResolutionWithWidth(160, 240);
-                            playClient.SetLocalViewWithContainer(small, UIViewContentMode.ScaleAspectFit);
-                            break;
-                    }
-                    playClient.InitPeerConnection();
-                    playClient.Start();
+                    if(webRtcClient == null)
+                        ReInitWebRTC();
+                    webRtcClient.Start();
                 }
                 UpdateViewConstraints();
-                updateButtonName();
+                refreshButtons();
             });
         }
 
-        public void updateButtonName()
+        public void refreshButtons()
         {
             switch (clientMode)
             {
@@ -114,9 +127,11 @@ namespace DT.WebRTC.iOS
                     break;
                 case AntMediaClientMode.Play:
                     actionButton.SetTitle(IsStreamActive ? "Stop" : "Play", UIControlState.Normal);
+                    muteAudioButton.Hidden = muteVideoButton.Hidden = switchCameraButton.Hidden = true;
                     break;
                 case AntMediaClientMode.Publish:
                     actionButton.SetTitle(IsStreamActive ? "Stop" : "Publish", UIControlState.Normal);
+                    muteAudioButton.Hidden = muteVideoButton.Hidden = switchCameraButton.Hidden = false;
                     break;
             }
         }
@@ -128,7 +143,7 @@ namespace DT.WebRTC.iOS
             BeginInvokeOnMainThread(() =>
             {
                 IsStreamActive = false;
-                updateButtonName();
+                refreshButtons();
             });
         }
 
@@ -140,7 +155,7 @@ namespace DT.WebRTC.iOS
                 controller.AddAction(UIAlertAction.Create("Ok", UIAlertActionStyle.Destructive, null));
                 PresentViewController(controller, true, null);
                 IsStreamActive = false;
-                updateButtonName();
+                refreshButtons();
             });
         }
 
@@ -163,7 +178,7 @@ namespace DT.WebRTC.iOS
             BeginInvokeOnMainThread(() =>
             {
                 IsStreamActive = false;
-                updateButtonName();
+                refreshButtons();
             });
         }
 

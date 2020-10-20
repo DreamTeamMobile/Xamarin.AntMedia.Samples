@@ -1,12 +1,11 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Android.App;
 using Android.OS;
-using Android.Runtime;
-using Android.Support.Design.Widget;
-using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
 using DE.Tavendo.Autobahn;
+using DT.Configuration;
 using IO.Antmedia.Webrtcandroidframework;
 using IO.Antmedia.Webrtcandroidframework.Apprtc;
 using Java.Interop;
@@ -14,7 +13,6 @@ using Java.Util;
 using Org.Webrtc;
 using Andr = Android;
 using Log = Android.Util.Log;
-using DT.Configuration;
 
 namespace DT.WebRTC.Droid
 {
@@ -26,13 +24,17 @@ namespace DT.WebRTC.Droid
         /**
          * Mode can Publish, Play or P2P
          */
-        private String webRTCMode = WebRTCClientConsts.ModePublish;
+        private String webRTCMode = WebRTCClientConsts.ModePlay;
 
         private CallFragment callFragment;
 
         private WebRTCClient webRTCClient;
 
         private Button startStreamingButton;
+        private Button muteVideoButton;
+        private Button muteAudioButton;
+        private Button switchCameraButton;
+        private RadioGroup radioGroup;
         private String operationName = "";
         private Timer timer;
         private String streamId;
@@ -50,10 +52,13 @@ namespace DT.WebRTC.Droid
             //getWindow().getDecorView().setSystemUiVisibility(getSystemUiVisibility());
 
             SetContentView(Resource.Layout.activity_main);
-            SurfaceViewRenderer cameraViewRenderer = FindViewById<SurfaceViewRenderer>(Resource.Id.camera_view_renderer);
-            SurfaceViewRenderer pipViewRenderer = FindViewById<SurfaceViewRenderer>(Resource.Id.pip_view_renderer);
+            
 
-            startStreamingButton = (Button)FindViewById(Resource.Id.start_streaming_button);
+            startStreamingButton = FindViewById<Button>(Resource.Id.start_streaming_button);
+            muteAudioButton = FindViewById<Button>(Resource.Id.mute_audio_button);
+            muteVideoButton = FindViewById<Button>(Resource.Id.mute_video_button);
+            switchCameraButton = FindViewById<Button>(Resource.Id.switch_camera_button);
+            radioGroup = FindViewById<RadioGroup>(Resource.Id.radioGroup);
 
             // Check for mandatory permissions.
             foreach (String permission in CallActivity.MandatoryPermissions)
@@ -65,34 +70,30 @@ namespace DT.WebRTC.Droid
                 }
             }
 
-            if (webRTCMode.Equals(WebRTCClientConsts.ModePublish))
+            RefreshButtons();
+            
+            InitWebRTC();
+        }
+
+        protected void InitWebRTC()
+        {
+            if(webRTCClient != null)
             {
-                startStreamingButton.Text = "Start Publishing";
-                operationName = "Publishing";
+                webRTCClient.StopStream();
+                webRTCClient.Disconnect();
+                webRTCClient.Dispose();
             }
-            else if (webRTCMode.Equals(WebRTCClientConsts.ModePlay))
-            {
-                startStreamingButton.Text = "Start Playing";
-                operationName = "Playing";
-            }
-            else if (webRTCMode.Equals(WebRTCClientConsts.ModeJoin))
-            {
-                startStreamingButton.Text = "Start P2P";
-                operationName = "P2P";
-            }
+            webRTCClient = new WebRTCClient(this, this);
             Intent.PutExtra(CallActivity.ExtraCapturetotextureEnabled, true);
             Intent.PutExtra(CallActivity.ExtraVideoFps, 30);
             Intent.PutExtra(CallActivity.ExtraVideoBitrate, 2500);
             Intent.PutExtra(CallActivity.ExtraCapturetotextureEnabled, true);
-
-            webRTCClient = new WebRTCClient(this, this);
-
-            //webRTCClient.setOpenFrontCamera(false);
-
+            SurfaceViewRenderer cameraViewRenderer = FindViewById<SurfaceViewRenderer>(Resource.Id.camera_view_renderer);
+            SurfaceViewRenderer pipViewRenderer = FindViewById<SurfaceViewRenderer>(Resource.Id.pip_view_renderer);
             streamId = InitialData.DefaultStream;
             String tokenId = InitialData.Token;//"tokenId";
             webRTCClient.SetVideoRenderers(pipViewRenderer, cameraViewRenderer);
-            webRTCClient.SetOpenFrontCamera(true);
+            webRTCClient.SetOpenFrontCamera(webRTCMode.Equals(WebRTCClientConsts.ModePublish));
             // Intent.PutExtra(CallActivity.EXTRA_VIDEO_FPS, 24);
             webRTCClient.Init(InitialData.SERVER_URL, streamId, webRTCMode, tokenId, Intent);
         }
@@ -100,7 +101,6 @@ namespace DT.WebRTC.Droid
         [Export("StartStreaming")]
         public void StartStreaming(View v)
         {
-
             if (!webRTCClient.IsStreaming)
             {
                 ((Button)v).Text = "Stop " + operationName;
@@ -110,6 +110,47 @@ namespace DT.WebRTC.Droid
             {
                 ((Button)v).Text = "Start " + operationName;
                 webRTCClient.StopStream();
+                DelayedReInit();
+            }
+            RefreshButtons();
+        }
+
+        protected async Task DelayedReInit()
+        {
+            await Task.Delay(500);
+            InitWebRTC();
+        }
+
+        protected void RefreshButtons()
+        {
+            if (webRTCMode.Equals(WebRTCClientConsts.ModePublish))
+            {
+                operationName = "Publishing";
+            }
+            else if (webRTCMode.Equals(WebRTCClientConsts.ModePlay))
+            {
+                operationName = "Playing";
+            }
+            else if (webRTCMode.Equals(WebRTCClientConsts.ModeJoin))
+            {
+                operationName = "P2P";
+            }
+            if (webRTCClient?.IsStreaming == true)
+            {
+                startStreamingButton.Text = "Stop " + operationName;
+                if (webRTCMode.Equals(WebRTCClientConsts.ModePublish))
+                {
+                    muteVideoButton.Visibility = ViewStates.Visible;
+                    muteAudioButton.Visibility = ViewStates.Visible;
+                    switchCameraButton.Visibility = ViewStates.Visible;
+                }
+            }
+            else
+            {
+                startStreamingButton.Text = "Start " + operationName;
+                muteVideoButton.Visibility = ViewStates.Invisible;
+                muteAudioButton.Visibility = ViewStates.Invisible;
+                switchCameraButton.Visibility = ViewStates.Invisible;
             }
         }
 
@@ -117,24 +158,50 @@ namespace DT.WebRTC.Droid
         public void ModeJoin(View v)
         {
             webRTCMode = WebRTCClientConsts.ModeJoin;
-            startStreamingButton.Text = "Start " + operationName;
-            webRTCClient.StopStream();
+            InitWebRTC();
+            RefreshButtons();
         }
 
         [Export("ModePlay")]
         public void ModePlay(View v)
         {
             webRTCMode = WebRTCClientConsts.ModePlay;
-            startStreamingButton.Text = "Start " + operationName;
-            webRTCClient.StopStream();
+            InitWebRTC();
+            RefreshButtons();
         }
 
         [Export("ModePublish")]
         public void ModePublish(View v)
         {
             webRTCMode = WebRTCClientConsts.ModePublish;
-            startStreamingButton.Text = "Start " + operationName;
-            webRTCClient.StopStream();
+            InitWebRTC();
+            RefreshButtons();
+        }
+
+        [Export("MuteAudio")]
+        public void MuteAudio(View v)
+        {
+            webRTCClient.ToggleMic();
+        }
+
+        [Export("MuteVideo")]
+        public void MuteVideo(View v)
+        {
+            if (webRTCClient.IsVideoOn)
+            {
+                webRTCClient.DisableVideo();
+            }
+            else
+            {
+                webRTCClient.EnableVideo();
+                webRTCClient.SetOpenFrontCamera(true);
+            }
+        }
+
+        [Export("SwitchCamera")]
+        public void SwitchCamera(View v)
+        {
+            webRTCClient.SwitchCamera();
         }
 
         public void OnPlayStarted()
@@ -142,6 +209,7 @@ namespace DT.WebRTC.Droid
             Log.WriteLine(Andr.Util.LogPriority.Info, this.Class.SimpleName, "onPlayStarted");
             Toast.MakeText(this, "Play started", ToastLength.Long).Show();
             webRTCClient.SwitchVideoScaling(RendererCommon.ScalingType.ScaleAspectFit);
+            RefreshButtons();
         }
 
 
@@ -149,14 +217,15 @@ namespace DT.WebRTC.Droid
         {
             Log.WriteLine(Andr.Util.LogPriority.Info, this.Class.SimpleName, "onPublishStarted");
             Toast.MakeText(this, "Publish started", ToastLength.Long).Show();
+            RefreshButtons();
 
         }
-
 
         public void OnPublishFinished()
         {
             Log.WriteLine(Andr.Util.LogPriority.Info, this.Class.SimpleName, "onPublishFinished");
             Toast.MakeText(this, "Publish finished", ToastLength.Long).Show();
+            RefreshButtons();
         }
 
 
@@ -164,6 +233,7 @@ namespace DT.WebRTC.Droid
         {
             Log.WriteLine(Andr.Util.LogPriority.Info, this.Class.SimpleName, "onPlayFinished");
             Toast.MakeText(this, "Play finished", ToastLength.Long).Show();
+            RefreshButtons();
         }
 
 
@@ -171,13 +241,14 @@ namespace DT.WebRTC.Droid
         {
             Log.WriteLine(Andr.Util.LogPriority.Info, this.Class.SimpleName, "noStreamExistsToPlay");
             Toast.MakeText(this, "No stream exist to play", ToastLength.Long).Show();
-            Finish();
+            RefreshButtons();
         }
 
 
         public void OnError(String description)
         {
             Toast.MakeText(this, "Error: " + description, ToastLength.Long).Show();
+            RefreshButtons();
         }
 
 

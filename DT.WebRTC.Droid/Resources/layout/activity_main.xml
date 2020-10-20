@@ -31,6 +31,39 @@
         android:onClick="StartStreaming"
         android:layout_gravity="bottom|center"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mute Audio"
+        android:visibility="invisible"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/mute_audio_button"
+        android:onClick="MuteAudio"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="top|left"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Switch Camera"
+        android:visibility="invisible"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/switch_camera_button"
+        android:onClick="SwitchCamera"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="top|center"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mute Video"
+        android:visibility="invisible"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/mute_video_button"
+        android:onClick="MuteVideo"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="top|right"/>
+
     <FrameLayout
         android:id="@+id/call_fragment_container"
         android:layout_width="match_parent"
@@ -43,7 +76,7 @@
         android:background="#cccccc"
         android:padding="10dp"
         android:orientation="horizontal">
-
+<!--
         <RadioButton
             android:id="@+id/radio_red"
             android:layout_width="match_parent"
@@ -53,7 +86,7 @@
             android:onClick="ModeJoin"
             android:layout_weight="1"
             android:checked="true" />
-
+        -->
         <RadioButton
             android:id="@+id/radio_blue"
             android:layout_width="match_parent"
@@ -61,6 +94,7 @@
             android:layout_marginLeft="24dp"
             android:onClick="ModePlay"
             android:text="Play"
+            android:checked="true"
             android:layout_weight="1" />
 
         <RadioButton

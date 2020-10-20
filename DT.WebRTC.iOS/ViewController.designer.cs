@@ -22,22 +22,40 @@ namespace DT.WebRTC.iOS
 		UIKit.UISegmentedControl modeSegments { get; set; }
 
 		[Outlet]
+		UIKit.UIButton muteAudioButton { get; set; }
+
+		[Outlet]
+		UIKit.UIButton muteVideoButton { get; set; }
+
+		[Outlet]
 		UIKit.UIView secondaryContainer { get; set; }
 
 		[Outlet]
 		UIKit.NSLayoutConstraint secondaryHeight { get; set; }
+
+		[Outlet]
+		UIKit.UIButton switchCameraButton { get; set; }
 
 		[Action ("doAction:")]
 		partial void doAction (Foundation.NSObject sender);
 
 		[Action ("modeChanged:")]
 		partial void modeChanged (Foundation.NSObject sender);
+
+		[Action ("muteAudio:")]
+		partial void muteAudio (Foundation.NSObject sender);
+
+		[Action ("muteVideo:")]
+		partial void muteVideo (Foundation.NSObject sender);
+
+		[Action ("switchCamera:")]
+		partial void switchCamera (Foundation.NSObject sender);
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (modeSegments != null) {
-				modeSegments.Dispose ();
-				modeSegments = null;
+			if (actionButton != null) {
+				actionButton.Dispose ();
+				actionButton = null;
 			}
 
 			if (fullContainer != null) {
@@ -45,9 +63,9 @@ namespace DT.WebRTC.iOS
 				fullContainer = null;
 			}
 
-			if (actionButton != null) {
-				actionButton.Dispose ();
-				actionButton = null;
+			if (modeSegments != null) {
+				modeSegments.Dispose ();
+				modeSegments = null;
 			}
 
 			if (secondaryContainer != null) {
@@ -58,6 +76,21 @@ namespace DT.WebRTC.iOS
 			if (secondaryHeight != null) {
 				secondaryHeight.Dispose ();
 				secondaryHeight = null;
+			}
+
+			if (muteAudioButton != null) {
+				muteAudioButton.Dispose ();
+				muteAudioButton = null;
+			}
+
+			if (switchCameraButton != null) {
+				switchCameraButton.Dispose ();
+				switchCameraButton = null;
+			}
+
+			if (muteVideoButton != null) {
+				muteVideoButton.Dispose ();
+				muteVideoButton = null;
 			}
 		}
 	}
