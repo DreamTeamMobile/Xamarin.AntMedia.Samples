@@ -1,10 +1,10 @@
-# Xamarin Android WebRTC Sample app
+# Xamarin Android WebRTC [Sample app](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples)
 
 Please follow our [WiKi](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/wiki) to find information:
 
 * [Step by Step Tutorial](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/wiki/Xamarin-Android-WebRTC-Tutorial) how to add AntMedia WebRTC to app
 
-### How to use
+### How to use nuget
 
 * add nuget package [DT.Xamarin.AntMedia.WebRTC.Android](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.Android/) [![NuGet Package](https://buildstats.info/nuget/DT.Xamarin.AntMedia.WebRTC.Android/)](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.Android/)
 <br>no additional steps required to init that package, all namespaces are equal to original framework
