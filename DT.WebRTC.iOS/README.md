@@ -1,10 +1,6 @@
 # Xamarin iOS WebRTC [Sample app](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples)
 
-Please follow our [WiKi](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/wiki) to find information:
-
-* [Step by Step Tutorial](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/wiki/Xamarin-iOS-WebRTC-Tutorial) how to add AntMedia WebRTC to app
-
-### How to use
+### How to use nuget
 
 * add nuget package [DT.Xamarin.AntMedia.WebRTC.iOS](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.iOS/) [![NuGet Package](https://buildstats.info/nuget/DT.Xamarin.AntMedia.WebRTC.iOS/)](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.iOS/)
 <br>no additional steps required to init that package, all namespaces are equal to original framework
@@ -23,3 +19,18 @@ Simple copy of AntMedia sample app with all basic video call functions:
 * Mute audio
 * Mute video
 * Switch camera
+
+## How to Run Sample
+
+### [Prerequisites](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/wiki/Prerequisites)
+1. you need up running Ant Media Server, [detailed explanation here](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/wiki/Prerequisites)
+
+1. Start from **[DT.Xamarin.AntMedia.Samples.sln](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/blob/main/DT.Xamarin.AntMedia.Samples.sln)**
+
+1. replace constant to your server addres in **[DT.Configuration/InitialData.cs](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/blob/main/DT.Configuration/InitialData.cs)**
+
+```
+public const string SERVER_ADDRESS = "domain-name.com:5080";
+```
+
+1. click **Run** button in Visual Studio.
