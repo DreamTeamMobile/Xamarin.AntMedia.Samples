@@ -28,7 +28,7 @@
         <Button x:Name="SomeActionButton" Padding="10" Text="Start" Clicked="SomeActionButton_Clicked" Grid.Column="1" Grid.Row="2"/>
         <Button x:Name="PublishModeButton" Padding="10" IsVisible="False" Text="Switch to Publish Mode" Clicked="PublishModeButton_Clicked" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" HorizontalOptions="Center"/>
         <Button x:Name="PlayModeButton" Padding="10" IsVisible="True" Text="Switch to Play Mode" Clicked="PlayModeButton_Clicked" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" HorizontalOptions="Center"/>
-        <Button x:Name="MuteAudioButton" Padding="10" IsVisible="{Binding Source={x:Reference AntFrame}, Path=IsPlaying}" Text="Mute Audio" Clicked="ToggleAudioButton_Clicked" Grid.Column="0" Grid.Row="0"/>
+        <Button x:Name="MuteAudioButton" Padding="10" IsVisible="{Binding Source={x:Reference AntFrame}, Path=IsPublishing}" Text="Mute Audio" Clicked="ToggleAudioButton_Clicked" Grid.Column="0" Grid.Row="0"/>
         <Button x:Name="MuteVideoButton" Padding="10" IsVisible="{Binding Source={x:Reference AntFrame}, Path=IsPublishing}" Text="Mute Video" Clicked="ToggleVideoButton_Clicked" Grid.Column="1" Grid.Row="0"/>
         <Button x:Name="SwitchCameraButton" Padding="10" IsVisible="{Binding Source={x:Reference AntFrame}, Path=IsPublishing}" Text="Switch Camera" Clicked="SwitchCameraButton_Clicked" Grid.Column="2" Grid.Row="0"/>
     </Grid>

@@ -76,6 +76,7 @@ namespace DT.WebRTC.Forms
         void AntFrame_Error(System.Object sender, DT.Xamarin.AntMedia.WebRTC.Forms.ErrorEventArgs e)
         {
             DisplayAlert("Error", e.Message, "Ok");
+            RefreshState();
         }
     }
 }
