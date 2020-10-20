@@ -28,17 +28,17 @@ public const string SERVER_ADDRESS = "domain-name.com:5080";
 
 ### Solution Projects
 
-* DT.Configuration - Simple shared project, common constants
+* [DT.Configuration](DT.Configuration) - Simple shared project, common constants
 
-* DT.WebRTC.Droid - Xamarin Android app with WebRTC sdk usage
+* [DT.WebRTC.Droid](DT.WebRTC.Droid) - Xamarin Android app with WebRTC sdk usage
 
-* DT.WebRTC.iOS - Xamarin iOS app with WebRTC sdk usage
+* [DT.WebRTC.iOS](DT.WebRTC.iOS) - Xamarin iOS app with WebRTC sdk usage
 
-* DT.WebRTC.Forms - Xamarin Forms library with all UI and logic of app with our Forms WebRTC sdk usage
+* [DT.WebRTC.Forms](DT.WebRTC.Forms) - Xamarin Forms library with all UI and logic of app with our Forms WebRTC sdk usage
 
-* DT.WebRTC.Forms.Android - Xamarin Forms Android app with our Forms WebRTC sdk usage
+* [DT.WebRTC.Forms.Android](DT.WebRTC.Forms.Android) - Xamarin Forms Android app with our Forms WebRTC sdk usage
 
-* DT.WebRTC.Forms.iOS - Xamarin Forms iOS app with our Forms WebRTC sdk usage
+* [DT.WebRTC.Forms.iOS](DT.WebRTC.Forms.iOS) - Xamarin Forms iOS app with our Forms WebRTC sdk usage
 
 ## License
 The MIT License (MIT).
