@@ -131,7 +131,7 @@ namespace DT.WebRTC.iOS
                     break;
                 case AntMediaClientMode.Publish:
                     actionButton.SetTitle(IsStreamActive ? "Stop" : "Publish", UIControlState.Normal);
-                    muteAudioButton.Hidden = muteVideoButton.Hidden = switchCameraButton.Hidden = false;
+                    muteAudioButton.Hidden = muteVideoButton.Hidden = switchCameraButton.Hidden = IsStreamActive ? false : true;
                     break;
             }
         }

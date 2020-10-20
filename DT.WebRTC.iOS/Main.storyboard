@@ -58,25 +58,31 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hii-vD-kpX">
-                                <rect key="frame" x="50" y="95" width="98" height="38"/>
+                                <rect key="frame" x="10" y="80" width="98" height="38"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                                <state key="normal" title="Mute Audio"/>
+                                <state key="normal" title="Mute Audio">
+                                    <color key="titleShadowColor" systemColor="labelColor"/>
+                                </state>
                                 <connections>
                                     <action selector="muteAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fms-8w-MTQ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lNG-I4-lTW">
-                                <rect key="frame" x="145" y="95" width="124" height="38"/>
+                                <rect key="frame" x="145" y="80" width="124" height="38"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                                <state key="normal" title="Switch Camera"/>
+                                <state key="normal" title="Switch Camera">
+                                    <color key="titleShadowColor" systemColor="labelColor"/>
+                                </state>
                                 <connections>
                                     <action selector="switchCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="78e-j3-Nfr"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ica-ev-3Yq">
-                                <rect key="frame" x="265" y="95" width="99" height="38"/>
+                                <rect key="frame" x="305" y="80" width="99" height="38"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                                <state key="normal" title="Mute Video"/>
+                                <state key="normal" title="Mute Video">
+                                    <color key="titleShadowColor" systemColor="labelColor"/>
+                                </state>
                                 <connections>
                                     <action selector="muteVideo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vTv-jM-BO3"/>
                                 </connections>
@@ -87,17 +93,17 @@
                             <constraint firstAttribute="trailing" secondItem="seU-fp-oP8" secondAttribute="trailing" id="6MM-df-zBU"/>
                             <constraint firstItem="qgH-9X-6Ug" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6ld-bT-atz"/>
                             <constraint firstItem="lNG-I4-lTW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8QG-zL-cnx"/>
-                            <constraint firstItem="hii-vD-kpX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="50" id="HZk-Pj-aHF"/>
+                            <constraint firstItem="hii-vD-kpX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="HZk-Pj-aHF"/>
                             <constraint firstItem="FgS-3a-DIF" firstAttribute="bottom" secondItem="qgH-9X-6Ug" secondAttribute="top" constant="10" id="Idz-qZ-y79"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="qgH-9X-6Ug" secondAttribute="bottom" constant="10" id="K4E-Lj-ptV"/>
                             <constraint firstItem="seU-fp-oP8" firstAttribute="bottom" secondItem="FgS-3a-DIF" secondAttribute="top" id="LAq-Ij-xtD"/>
                             <constraint firstAttribute="trailing" secondItem="FgS-3a-DIF" secondAttribute="trailing" id="LCC-wI-Oai"/>
-                            <constraint firstItem="hii-vD-kpX" firstAttribute="top" secondItem="018-V1-2Au" secondAttribute="bottom" constant="20" id="Pi9-bI-lWa"/>
+                            <constraint firstItem="hii-vD-kpX" firstAttribute="top" secondItem="018-V1-2Au" secondAttribute="bottom" constant="5" id="Pi9-bI-lWa"/>
                             <constraint firstItem="FgS-3a-DIF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="TN4-9E-dhR"/>
-                            <constraint firstAttribute="trailing" secondItem="Ica-ev-3Yq" secondAttribute="trailing" constant="50" id="aGE-YE-LNH"/>
-                            <constraint firstItem="lNG-I4-lTW" firstAttribute="top" secondItem="018-V1-2Au" secondAttribute="bottom" constant="20" id="b8q-1w-0wX"/>
+                            <constraint firstAttribute="trailing" secondItem="Ica-ev-3Yq" secondAttribute="trailing" constant="10" id="aGE-YE-LNH"/>
+                            <constraint firstItem="lNG-I4-lTW" firstAttribute="top" secondItem="018-V1-2Au" secondAttribute="bottom" constant="5" id="b8q-1w-0wX"/>
                             <constraint firstItem="seU-fp-oP8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="eJn-nl-Yfs"/>
-                            <constraint firstItem="Ica-ev-3Yq" firstAttribute="top" secondItem="018-V1-2Au" secondAttribute="bottom" constant="20" id="p0U-M4-kNC"/>
+                            <constraint firstItem="Ica-ev-3Yq" firstAttribute="top" secondItem="018-V1-2Au" secondAttribute="bottom" constant="5" id="p0U-M4-kNC"/>
                             <constraint firstItem="018-V1-2Au" firstAttribute="bottom" secondItem="seU-fp-oP8" secondAttribute="top" id="vqp-U3-2x4"/>
                             <constraint firstItem="018-V1-2Au" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wEu-TV-UnN"/>
                             <constraint firstItem="y3c-jy-aDJ" firstAttribute="bottom" secondItem="018-V1-2Au" secondAttribute="top" id="xvt-sZ-Nry"/>
@@ -120,6 +126,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
