@@ -71,7 +71,7 @@ Please follow our [WiKi](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Sam
         }
   ```
 
-* then you can use our [Documentation](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/wiki/Xamarin-iOS-WebRTC) for detailed description on controls
+* then you can use our [Documentation](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/wiki/Xamarin-Forms-WebRTC) for detailed description on controls
 * or simple [Tutorial](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/wiki/Xamarin-Forms-WebRTC-Tutorial)
 
 ### What available in [our sample](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples)
