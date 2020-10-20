@@ -19,6 +19,7 @@ Simple copy of AntMedia sample app with all basic video call functions:
 
 * Start/Stop Publishing WebRTC stream
 * Start/Stop Playing WebRTC stream
+* Init to preview from camera before start publishing
 * Mute audio
 * Mute video
 * Switch camera
