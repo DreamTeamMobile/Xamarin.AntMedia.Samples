@@ -13,7 +13,8 @@ Please follow our [WiKi](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Sam
 * to Android project - add nuget package [DT.Xamarin.AntMedia.WebRTC.Android](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.Android/) [![NuGet Package](https://buildstats.info/nuget/DT.Xamarin.AntMedia.WebRTC.Android/)](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.Android/)
 
 * to iOS project - add nuget package [DT.Xamarin.AntMedia.WebRTC.iOS](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.iOS/) [![NuGet Package](https://buildstats.info/nuget/DT.Xamarin.AntMedia.WebRTC.iOS/)](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.iOS/)
-<br> add `[assembly: ExportRenderer(typeof(AntWebRTCView), typeof(AntWebRTCViewRenderer))]` to [AppDelegate.cs](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/blob/main/DT.WebRTC.Forms.iOS/AppDelegate.cs), outside of namespaces
+
+add `[assembly: ExportRenderer(typeof(AntWebRTCView), typeof(AntWebRTCViewRenderer))]` to [AppDelegate.cs](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/blob/main/DT.WebRTC.Forms.iOS/AppDelegate.cs), outside of namespaces
   ```
   using DT.Xamarin.AntMedia.WebRTC.Forms;
   using DT.Xamarin.AntMedia.WebRTC.Forms.iOS;
@@ -48,6 +49,11 @@ Please follow our [WiKi](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Sam
             PublishFinished="AntFrame_Refresh"
             Error="AntFrame_Error"
             />
+  ```
+  set server address and token(token can be empty string)
+  ```
+        AntFrame.Server = InitialData.SERVER_URL;
+        AntFrame.Token = InitialData.Token;
   ```
   to Start or Stop stream call where you need
   ```
