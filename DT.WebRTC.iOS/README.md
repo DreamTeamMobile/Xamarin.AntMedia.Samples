@@ -10,8 +10,8 @@ Please follow our [WiKi](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Sam
 <br>no additional steps required to init that package, all namespaces are equal to original framework
 
 * then you can use 
-  * our [Step by Step Xamarin Tutorial](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/wiki/Xamarin-Android-WebRTC-Tutorial)
-  * [Ant Media iOS Sample documentation](https://github.com/ant-media/Ant-Media-Server/wiki/WebRTC-Android-SDK-Guide)
+  * our [Step by Step Xamarin Tutorial](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/wiki/Xamarin-iOS-WebRTC-Tutorial)
+  * [Ant Media iOS Sample documentation](https://github.com/ant-media/Ant-Media-Server/wiki/WebRTC-iOS-SDK-Guide)
 
 ### What in sample
 
