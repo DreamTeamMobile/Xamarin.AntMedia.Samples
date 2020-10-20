@@ -16,7 +16,7 @@ Also we have **[WiKi](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Sample
 ## Code in Repository
 
 ### [Prerequisites](wiki/Prerequisites)
-1. you need up running Ant Media Server, [detailed explanation here](wiki/Prerequisites)
+1. you need up running Ant Media Server, [detailed explanation here](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/wiki/Prerequisites)
 
 1. Start from **[DT.Xamarin.AntMedia.Samples.sln](DT.Xamarin.AntMedia.Samples.sln)**
 
