@@ -36,19 +36,20 @@
                                 </connections>
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="seU-fp-oP8">
-                                <rect key="frame" x="0.0" y="75" width="414" height="757"/>
+                                <rect key="frame" x="0.0" y="75" width="414" height="749"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FgS-3a-DIF" userLabel="Fix">
-                                <rect key="frame" x="0.0" y="832" width="414" height="0.0"/>
+                                <rect key="frame" x="0.0" y="824" width="414" height="0.0"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" id="Na9-7K-anq"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qgH-9X-6Ug">
-                                <rect key="frame" x="172" y="822" width="70" height="30"/>
+                                <rect key="frame" x="162" y="814" width="90" height="38"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                 <state key="normal" title="Do Action">
                                     <color key="titleShadowColor" systemColor="systemPinkColor"/>
                                 </state>
@@ -57,21 +58,24 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hii-vD-kpX">
-                                <rect key="frame" x="50" y="95" width="78" height="30"/>
+                                <rect key="frame" x="50" y="95" width="98" height="38"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                 <state key="normal" title="Mute Audio"/>
                                 <connections>
                                     <action selector="muteAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fms-8w-MTQ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lNG-I4-lTW">
-                                <rect key="frame" x="155" y="95" width="104" height="30"/>
+                                <rect key="frame" x="145" y="95" width="124" height="38"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                 <state key="normal" title="Switch Camera"/>
                                 <connections>
                                     <action selector="switchCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="78e-j3-Nfr"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ica-ev-3Yq">
-                                <rect key="frame" x="285" y="95" width="79" height="30"/>
+                                <rect key="frame" x="265" y="95" width="99" height="38"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                 <state key="normal" title="Mute Video"/>
                                 <connections>
                                     <action selector="muteVideo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vTv-jM-BO3"/>

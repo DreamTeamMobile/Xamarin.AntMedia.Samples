@@ -19,6 +19,8 @@
             RenderingMode="ScaleAspectFit"
             WebRTCMode="Publish"
             Camera="Front"
+            ShowDebugLogs="True"
+            InitMode="InitOnViewRender"
             PlayStarted="AntFrame_Refresh"
             PlayFinished="AntFrame_Refresh"
             PublishStarted="AntFrame_Refresh"

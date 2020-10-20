@@ -1,4 +1,5 @@
-﻿using DT.Configuration;
+﻿using System.Threading.Tasks;
+using DT.Configuration;
 using Xamarin.Forms;
 
 namespace DT.WebRTC.Forms
@@ -8,6 +9,8 @@ namespace DT.WebRTC.Forms
         public MainPage()
         {
             InitializeComponent();
+            AntFrame.Server = InitialData.SERVER_URL;
+            AntFrame.Token = InitialData.Token;
         }
 
         void SomeActionButton_Clicked(System.Object sender, System.EventArgs e)
@@ -15,11 +18,18 @@ namespace DT.WebRTC.Forms
             if (AntFrame.IsPublishing || AntFrame.IsPlaying)
             {
                 AntFrame.Stop();
+                DelayedRestart();//if publishing that will make rendering from camera to layout as preview
             }
             else
             {
-                AntFrame.Init(InitialData.SERVER_URL, InitialData.Token);
+                AntFrame.Start();
             }
+        }
+
+        protected async Task DelayedRestart()
+        {
+            await Task.Delay(500);
+            AntFrame.Init();
         }
 
         void ToggleAudioButton_Clicked(System.Object sender, System.EventArgs e)
@@ -62,14 +72,21 @@ namespace DT.WebRTC.Forms
         void PublishModeButton_Clicked(System.Object sender, System.EventArgs e)
         {
             if (!AntFrame.IsPlaying && !AntFrame.IsPublishing)
+            {
                 AntFrame.WebRTCMode = Xamarin.AntMedia.WebRTC.Forms.AntWebRTCMode.Publish;
+                AntFrame.Init();
+            }
+                
             RefreshState();
         }
 
         void PlayModeButton_Clicked(System.Object sender, System.EventArgs e)
         {
             if (!AntFrame.IsPlaying && !AntFrame.IsPublishing)
+            {
                 AntFrame.WebRTCMode = Xamarin.AntMedia.WebRTC.Forms.AntWebRTCMode.Play;
+                AntFrame.Init();
+            }
             RefreshState();
         }
 
