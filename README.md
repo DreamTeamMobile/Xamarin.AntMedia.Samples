@@ -32,7 +32,7 @@ public const string SERVER_ADDRESS = "domain-name.com:5080";
 
 * DT.WebRTC.Droid - Xamarin Android app with WebRTC sdk usage
 
-* DT.WebRTC.iOS - Xamarin Android app with WebRTC sdk usage
+* DT.WebRTC.iOS - Xamarin iOS app with WebRTC sdk usage
 
 * DT.WebRTC.Forms - Xamarin Forms library with all UI and logic of app with our Forms WebRTC sdk usage
 
