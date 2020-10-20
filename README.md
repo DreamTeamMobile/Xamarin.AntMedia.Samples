@@ -43,6 +43,9 @@ public const string SERVER_ADDRESS = "domain-name.com:5080";
 ## License
 The MIT License (MIT).
 
+#### **CRITICAL thing about SDK** It Does Not Support Any Simulator build for now, also .Forms library should build for .netstandard2.1
+will be added netstandard2.0 and simulators suppurt in the nearest week
+
 ## Contact
 contact@dreamteam-mobile.com
 
