@@ -1,5 +1,4 @@
 #### **CRITICAL thing about SDK** It Does Not Support Any Simulator build for now
-will be added netstandard2.0 and simulators support in the nearest week
 
 # Xamarin Forms WebRTC Sample app
 
