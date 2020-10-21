@@ -34,7 +34,7 @@ public const string SERVER_ADDRESS = "domain-name.com:5080";
 
 * [DT.WebRTC.iOS](DT.WebRTC.iOS) - Xamarin iOS app with WebRTC sdk usage, [wiki](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/wiki/Xamarin-iOS-WebRTC)
 
-* [DT.WebRTC.Forms](DT.WebRTC.Forms) - Xamarin Forms library with all UI and logic of app with our Forms WebRTC sdk usage, [wiki](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/wiki/Xamarin-Forms-WebRTC)
+* [DT.WebRTC.Forms](DT.WebRTC.Forms) - Xamarin Forms app with all UI and logic of app with our Forms WebRTC sdk usage, [wiki](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/wiki/Xamarin-Forms-WebRTC)
 
 * [DT.WebRTC.Forms.Android](DT.WebRTC.Forms.Android) - Xamarin Forms Android app with our Forms WebRTC sdk usage, [wiki](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/wiki/Xamarin-Forms-WebRTC)
 
