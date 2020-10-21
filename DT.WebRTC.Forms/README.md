@@ -31,11 +31,100 @@ will be added netstandard2.0 and simulators support in the nearest week
   namespace DT.WebRTC.Forms.iOS
   ...
   ```
+* Configure Android Intent for Nuget
+Open **Android/MainActivity.cs** Add code to **OnCreate**
+```
+       protected override void OnCreate(Bundle savedInstanceState)
+        {
+            TabLayoutResource = Resource.Layout.Tabbar;
+            ToolbarResource = Resource.Layout.Toolbar;
+
+            base.OnCreate(savedInstanceState);
+
+            //Begin Inserted
+            DT.Xamarin.AntMedia.WebRTC.Forms.Android.AntAndroidService.CurrentIntent = Intent;
+            //End Inserted
+
+            global::Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+            global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            LoadApplication(new App());
+        }
+  ```
+* add android and ios permissions usage
+
+Modify Properties/AndroidManifest.xml
+```
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.dreamteammobile.antmedia.dt_antmedia_tutorial_forms">
+    <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="28" />
+    <application android:label="DT.AntMedia.Tutorial.Forms.Android" android:theme="@style/MainTheme"></application>
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-feature android:glEsVersion="0x00020000" android:required="true" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+</manifest>
+```
+add Camera and Microphone Permissions usage description to **Info.plist**
+```
+	<key>NSCameraUsageDescription</key>
+	<string>Camera access is required for video chat</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Microphone access is required for video chat</string>
+```
 * add reference to framework on page or some view in Core project
   ```xaml
   xmlns:ant="clr-namespace:DT.Xamarin.AntMedia.WebRTC.Forms;assembly=DT.Xamarin.AntMedia.WebRTC.Forms"
   ```
-  and use special control
+  and use special control AntWebRTCView
+  ```
+  <?xml version="1.0" encoding="utf-8"?>
+  <ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ant="clr-namespace:DT.Xamarin.AntMedia.WebRTC.Forms;assembly=DT.Xamarin.AntMedia.WebRTC.Forms"
+    x:Class="DT.AntMedia.Tutorial.Forms.MainPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <ant:AntWebRTCView
+            x:Name="AntFrame1"
+            Grid.Row="0"
+            Server="ws://drmtm.us:5080/WebRTCAppEE/websocket"
+            RenderingMode="ScaleAspectFit"
+            WebRTCMode="Publish"
+            Camera="Front"
+            StreamID="stream1"
+            ShowDebugLogs="True"
+            InitMode="InitAndStartOnViewRender"
+            />
+
+        <ant:AntWebRTCView
+            x:Name="AntFrame2"
+            Grid.Row="1"
+            Server="ws://drmtm.us:5080/WebRTCAppEE/websocket"
+            RenderingMode="ScaleAspectFit"
+            WebRTCMode="Play"
+            StreamID="stream2"
+            ShowDebugLogs="True"
+            InitMode="InitAndStartOnViewRender"
+            />
+    </Grid>
+  </ContentPage>
+  ```
+  You done! run and check
+  
+  for more control on view, change **InitMode** property
   ```
   <ant:AntWebRTCView
             x:Name="AntFrame"
@@ -74,7 +163,7 @@ will be added netstandard2.0 and simulators support in the nearest week
             }
         }
   ```
-
+  
 * then you can use our [Documentation](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/wiki/Xamarin-Forms-WebRTC) for detailed description on controls
 * or simple [Tutorial](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/wiki/Xamarin-Forms-WebRTC-Tutorial)
 
