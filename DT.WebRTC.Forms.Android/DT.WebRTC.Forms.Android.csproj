@@ -59,7 +59,7 @@
       <Version>0.9.5</Version>
     </PackageReference>
     <PackageReference Include="DT.Xamarin.AntMedia.WebRTC.Forms">
-      <Version>0.9.5</Version>
+      <Version>0.9.6</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
