@@ -12,8 +12,6 @@
 
 * to all projects, Core, iOS, Android - add nuget package [DT.Xamarin.AntMedia.WebRTC.Forms](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.Forms/) [![NuGet Package](https://buildstats.info/nuget/DT.Xamarin.AntMedia.WebRTC.Forms/)](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.Forms/)
 
-* to Android project - add nuget package [DT.Xamarin.AntMedia.WebRTC.Android](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.Android/) [![NuGet Package](https://buildstats.info/nuget/DT.Xamarin.AntMedia.WebRTC.Android/)](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.Android/)
-
 * to iOS project - add nuget package [DT.Xamarin.AntMedia.WebRTC.iOS](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.iOS/) [![NuGet Package](https://buildstats.info/nuget/DT.Xamarin.AntMedia.WebRTC.iOS/)](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.iOS/)
 
 * add `[assembly: ExportRenderer(typeof(AntWebRTCView), typeof(AntWebRTCViewRenderer))]` to [AppDelegate.cs](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/blob/main/DT.WebRTC.Forms.iOS/AppDelegate.cs), outside of namespaces
@@ -29,49 +27,52 @@
   namespace DT.WebRTC.Forms.iOS
   ...
   ```
-* add reference to framework on page or some view in Core project
-  ```xaml
-  xmlns:ant="clr-namespace:DT.Xamarin.AntMedia.WebRTC.Forms;assembly=DT.Xamarin.AntMedia.WebRTC.Forms"
+* add Camera and Microphone Permissions usage description to **Info.plist**
   ```
-  and use special control
+	  <key>NSCameraUsageDescription</key>
+	  <string>Camera access is required for video chat</string>
+	  <key>NSMicrophoneUsageDescription</key>
+	  <string>Microphone access is required for video chat</string>
   ```
-  <ant:AntWebRTCView
-            x:Name="AntFrame"
-            Grid.Column="0"
-            Grid.ColumnSpan="3"
-            Grid.Row="1"
+* use special control AntWebRTCView
+  ```
+  <?xml version="1.0" encoding="utf-8"?>
+  <ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ant="clr-namespace:DT.Xamarin.AntMedia.WebRTC.Forms;assembly=DT.Xamarin.AntMedia.WebRTC.Forms"
+    x:Class="DT.AntMedia.Tutorial.Forms.MainPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <ant:AntWebRTCView
+            x:Name="AntFrame1"
+            Grid.Row="0"
+            Server="ws://drmtm.us:5080/WebRTCAppEE/websocket"
             RenderingMode="ScaleAspectFit"
             WebRTCMode="Publish"
             Camera="Front"
+            StreamID="stream1"
             ShowDebugLogs="True"
-            InitMode="InitOnViewRender"
-            PlayStarted="AntFrame_Refresh"
-            PlayFinished="AntFrame_Refresh"
-            PublishStarted="AntFrame_Refresh"
-            PublishFinished="AntFrame_Refresh"
-            Error="AntFrame_Error"
+            InitMode="InitAndStartOnViewRender"
             />
+
+        <ant:AntWebRTCView
+            x:Name="AntFrame2"
+            Grid.Row="1"
+            Server="ws://drmtm.us:5080/WebRTCAppEE/websocket"
+            RenderingMode="ScaleAspectFit"
+            WebRTCMode="Play"
+            StreamID="stream2"
+            ShowDebugLogs="True"
+            InitMode="InitAndStartOnViewRender"
+            />
+    </Grid>
+  </ContentPage>
   ```
-  set server address and token(token can be empty string)
-  ```
-        AntFrame.Server = InitialData.SERVER_URL;
-        AntFrame.Token = InitialData.Token;
-  ```
-  to Start or Stop stream call where you need
-  ```
-        void SomeActionButton_Clicked(System.Object sender, System.EventArgs e)
-        {
-            if (AntFrame.IsPublishing || AntFrame.IsPlaying)
-            {
-                AntFrame.Stop();
-                DelayedRestart();//if publishing that will make rendering from camera to layout as preview
-            }
-            else
-            {
-                AntFrame.Start();
-            }
-        }
-  ```
+  You done! run and check
 
 * then you can use our [Documentation](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/wiki/Xamarin-Forms-WebRTC) for detailed description on controls
 * or simple [Tutorial](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/wiki/Xamarin-Forms-WebRTC-Tutorial)
