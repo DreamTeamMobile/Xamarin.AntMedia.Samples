@@ -11,11 +11,11 @@
 
 ### How to use nuget
 
-* to all projects, Core, iOS, Android - add nuget package [DT.Xamarin.AntMedia.WebRTC.Forms](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.Forms/) [![NuGet Package](https://buildstats.info/nuget/DT.Xamarin.AntMedia.WebRTC.Forms/)](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.Forms/)
+* to all projects, Core, iOS, Android - add nuget package [DT.Xamarin.AntMedia.WebRTC.Forms](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.Forms/) [![NuGet Package](https://buildstats.info/nuget/DT.Xamarin.AntMedia.WebRTC.Forms)](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.Forms/)
 
-* to Android project - add nuget package [DT.Xamarin.AntMedia.WebRTC.Android](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.Android/) [![NuGet Package](https://buildstats.info/nuget/DT.Xamarin.AntMedia.WebRTC.Android/)](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.Android/)
+* to Android project - add nuget package [DT.Xamarin.AntMedia.WebRTC.Android](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.Android/) [![NuGet Package](https://buildstats.info/nuget/DT.Xamarin.AntMedia.WebRTC.Android)](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.Android/)
 
-* to iOS project - add nuget package [DT.Xamarin.AntMedia.WebRTC.iOS](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.iOS/) [![NuGet Package](https://buildstats.info/nuget/DT.Xamarin.AntMedia.WebRTC.iOS/)](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.iOS/)
+* to iOS project - add nuget package [DT.Xamarin.AntMedia.WebRTC.iOS](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.iOS/) [![NuGet Package](https://buildstats.info/nuget/DT.Xamarin.AntMedia.WebRTC.iOS)](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.iOS/)
 
 * add `[assembly: ExportRenderer(typeof(AntWebRTCView), typeof(AntWebRTCViewRenderer))]` to [AppDelegate.cs](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/blob/main/DT.WebRTC.Forms.iOS/AppDelegate.cs), outside of namespaces
   ```
