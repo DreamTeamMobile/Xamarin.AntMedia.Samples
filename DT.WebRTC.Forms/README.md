@@ -17,32 +17,30 @@
 
 * to iOS project - add nuget package [DT.Xamarin.AntMedia.WebRTC.iOS](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.iOS/) [![NuGet Package](https://buildstats.info/nuget/DT.Xamarin.AntMedia.WebRTC.iOS)](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.iOS/)
 
-* add `[assembly: ExportRenderer(typeof(AntWebRTCView), typeof(AntWebRTCViewRenderer))]` to [AppDelegate.cs](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/blob/main/DT.WebRTC.Forms.iOS/AppDelegate.cs), outside of namespaces
+* add `AntManagerIos.Init();` to [AppDelegate.cs](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/blob/main/DT.WebRTC.Forms.iOS/AppDelegate.cs), outside of namespaces
   ```
-  using DT.Xamarin.AntMedia.WebRTC.Forms;
-  using DT.Xamarin.AntMedia.WebRTC.Forms.iOS;
-  using Foundation;
-  using UIKit;
-  using Xamarin.Forms;
-
-  [assembly: ExportRenderer(typeof(AntWebRTCView), typeof(AntWebRTCViewRenderer))]
-
-  namespace DT.WebRTC.Forms.iOS
+	public override bool FinishedLaunching(UIApplication app, NSDictionary options)
+        {
+            AntManagerIos.Init();
+            global::Xamarin.Forms.Forms.Init();
+            LoadApplication(new App());
+            return base.FinishedLaunching(app, options);
+        }
   ...
   ```
 * Configure Android Intent for Nuget
 Open **Android/MainActivity.cs** Add code to **OnCreate**
 ```
+using DT.Xamarin.AntMedia.WebRTC.Forms.Android;
+
        protected override void OnCreate(Bundle savedInstanceState)
         {
-            TabLayoutResource = Resource.Layout.Tabbar;
-            ToolbarResource = Resource.Layout.Toolbar;
-
+	...
             base.OnCreate(savedInstanceState);
-
-            //Begin Inserted
-            DT.Xamarin.AntMedia.WebRTC.Forms.Android.AntAndroidService.CurrentIntent = Intent;
-            //End Inserted
+ //Begin Inserted
+            AntManagerDroid.Init();
+            AntAndroidService.CurrentIntent = Intent;
+//End Inserted
 
             global::Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
