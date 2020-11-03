@@ -142,8 +142,8 @@ add Camera and Microphone Permissions usage description to **Info.plist**
   ```
   set server address and token(token can be empty string)
   ```
-        AntFrame.Server = InitialData.SERVER_URL;
-        AntFrame.Token = InitialData.Token;
+        AntManager.Current.DefaultServer = InitialData.SERVER_URL;
+        AntManager.Current.DefaultToken = InitialData.Token;
   ```
   to Start or Stop stream call where you need
   ```
