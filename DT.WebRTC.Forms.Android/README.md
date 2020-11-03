@@ -22,10 +22,9 @@ Open **Android/MainActivity.cs** Add code to **OnCreate**
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
-
-            //Begin Inserted
-            DT.Xamarin.AntMedia.WebRTC.Forms.Android.AntAndroidService.CurrentIntent = Intent;
-            //End Inserted
+ //Begin Inserted
+            AntManagerDroid.Init(Intent);
+//End Inserted
 
             global::Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
