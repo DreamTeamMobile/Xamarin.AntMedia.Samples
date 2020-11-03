@@ -38,8 +38,7 @@ using DT.Xamarin.AntMedia.WebRTC.Forms.Android;
 	...
             base.OnCreate(savedInstanceState);
  //Begin Inserted
-            AntManagerDroid.Init();
-            AntAndroidService.CurrentIntent = Intent;
+            AntManagerDroid.Init(Intent);
 //End Inserted
 
             global::Xamarin.Essentials.Platform.Init(this, savedInstanceState);
