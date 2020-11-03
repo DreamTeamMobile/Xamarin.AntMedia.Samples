@@ -14,17 +14,16 @@
 
 * to iOS project - add nuget package [DT.Xamarin.AntMedia.WebRTC.iOS](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.iOS/) [![NuGet Package](https://buildstats.info/nuget/DT.Xamarin.AntMedia.WebRTC.iOS)](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.iOS/)
 
-* add `[assembly: ExportRenderer(typeof(AntWebRTCView), typeof(AntWebRTCViewRenderer))]` to [AppDelegate.cs](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/blob/main/DT.WebRTC.Forms.iOS/AppDelegate.cs), outside of namespaces
+
+* add `AntManagerIos.Init();` to [AppDelegate.cs](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/blob/main/DT.WebRTC.Forms.iOS/AppDelegate.cs)
   ```
-  using DT.Xamarin.AntMedia.WebRTC.Forms;
-  using DT.Xamarin.AntMedia.WebRTC.Forms.iOS;
-  using Foundation;
-  using UIKit;
-  using Xamarin.Forms;
-
-  [assembly: ExportRenderer(typeof(AntWebRTCView), typeof(AntWebRTCViewRenderer))]
-
-  namespace DT.WebRTC.Forms.iOS
+	public override bool FinishedLaunching(UIApplication app, NSDictionary options)
+        {
+            AntManagerIos.Init();
+            global::Xamarin.Forms.Forms.Init();
+            LoadApplication(new App());
+            return base.FinishedLaunching(app, options);
+        }
   ...
   ```
 * add Camera and Microphone Permissions usage description to **Info.plist**
