@@ -17,12 +17,11 @@ namespace DT.WebRTC.Forms.Droid
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
-
+            AntManagerDroid.Init(Intent);
             base.OnCreate(savedInstanceState);
-
             global::Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            AntAndroidService.CurrentIntent = Intent;
+            
             LoadApplication(new App());
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)

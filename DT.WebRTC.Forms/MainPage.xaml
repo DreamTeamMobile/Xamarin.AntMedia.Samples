@@ -20,6 +20,7 @@
             WebRTCMode="Publish"
             Camera="Front"
             ShowDebugLogs="True"
+            EnableDataChannel="True"
             InitMode="InitOnViewRender"
             PlayStarted="AntFrame_Refresh"
             PlayFinished="AntFrame_Refresh"

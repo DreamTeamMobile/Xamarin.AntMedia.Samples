@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using DT.Configuration;
+using DT.Xamarin.AntMedia.WebRTC.Forms;
 using Xamarin.Forms;
 
 namespace DT.WebRTC.Forms
@@ -9,8 +10,20 @@ namespace DT.WebRTC.Forms
         public MainPage()
         {
             InitializeComponent();
-            AntFrame.Server = InitialData.SERVER_URL;
-            AntFrame.Token = InitialData.Token;
+            AntManager.Current.DefaultServer = InitialData.SERVER_URL;
+            AntManager.Current.DefaultToken = InitialData.Token;
+            AntFrame.DataReceived += AntFrame_DataReceived;
+            AntManager.Current.Android_IDataChannelObserver_OnMessage += Instance_Android_IDataChannelObserver_OnMessage;
+        }
+
+        private void Instance_Android_IDataChannelObserver_OnMessage(object sender, DataEventArgs e)
+        {
+            //receive message from all streamId's here, filter by e.StreamId
+        }
+
+        private void AntFrame_DataReceived(object sender, DataEventArgs e)
+        {
+            //receive message routed from AntView by special StreamId
         }
 
         void SomeActionButton_Clicked(System.Object sender, System.EventArgs e)

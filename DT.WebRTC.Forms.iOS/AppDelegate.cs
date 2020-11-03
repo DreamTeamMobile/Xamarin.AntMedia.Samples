@@ -7,7 +7,7 @@ using Foundation;
 using UIKit;
 using Xamarin.Forms;
 
-[assembly: ExportRenderer(typeof(AntWebRTCView), typeof(AntWebRTCViewRenderer))]
+//[assembly: ExportRenderer(typeof(AntWebRTCView), typeof(AntWebRTCViewRenderer))]
 
 namespace DT.WebRTC.Forms.iOS
 {
@@ -26,6 +26,7 @@ namespace DT.WebRTC.Forms.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            AntManagerIos.Init();
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
             return base.FinishedLaunching(app, options);
