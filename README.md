@@ -1,5 +1,5 @@
 # [DT](https://dreamteam-mobile.com/) Xamarin [Ant Media](https://antmedia.io/) WebRTC SDK Samples
-
+![](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/raw/main/AntMedia-Banner.jpg)
 This Repository contains Sample Apps for Xamarin Bindings of Ant Media WebRTC Android and iOS SDK's
 
 Also we have **[WiKi](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/wiki) with all detailed information and step-by-step Tutorials for easy usage of our [Nuget packages](https://www.nuget.org/packages?q=antmedia+dreamteammobile)**:
