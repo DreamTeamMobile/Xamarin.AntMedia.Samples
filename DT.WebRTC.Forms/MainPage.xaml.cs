@@ -12,18 +12,27 @@ namespace DT.WebRTC.Forms
             InitializeComponent();
             AntManager.Current.DefaultServer = InitialData.SERVER_URL;
             AntManager.Current.DefaultToken = InitialData.Token;
+            AntFrame.StreamID = InitialData.DefaultStream;
             AntFrame.DataReceived += AntFrame_DataReceived;
+            AntManager.Current.Ios_IAntMediaClientDelegate_DataReceivedFromDataChannelWithStreamId += Current_Ios_IAntMediaClientDelegate_DataReceivedFromDataChannelWithStreamId;
             AntManager.Current.Android_IDataChannelObserver_OnMessage += Instance_Android_IDataChannelObserver_OnMessage;
+        }
+
+        private void Current_Ios_IAntMediaClientDelegate_DataReceivedFromDataChannelWithStreamId(object sender, DataEventArgs e)
+        {
+            throw new System.NotImplementedException();
         }
 
         private void Instance_Android_IDataChannelObserver_OnMessage(object sender, DataEventArgs e)
         {
             //receive message from all streamId's here, filter by e.StreamId
+            throw new System.NotImplementedException();
         }
 
         private void AntFrame_DataReceived(object sender, DataEventArgs e)
         {
             //receive message routed from AntView by special StreamId
+            throw new System.NotImplementedException();
         }
 
         void SomeActionButton_Clicked(System.Object sender, System.EventArgs e)
@@ -107,6 +116,16 @@ namespace DT.WebRTC.Forms
         {
             DisplayAlert("Error", e.Message, "Ok");
             RefreshState();
+        }
+
+        void SendBinary_Clicked(System.Object sender, System.EventArgs e)
+        {
+            AntFrame.SendBinaryMessage(new byte[] { 2 });
+        }
+
+        void SendMsg_Clicked(System.Object sender, System.EventArgs e)
+        {
+            AntFrame.SendMessage("hello");
         }
     }
 }
