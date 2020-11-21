@@ -29,7 +29,7 @@
             PublishFinished="AntFrame_Refresh"
             Error="AntFrame_Error"
             />
-        <Button x:Name="SomeActionButton" Padding="10,0,10,0" Text="Start" Clicked="SomeActionButton_Clicked" Grid.Column="1" Grid.Row="2"/>
+        <Button x:Name="SomeActionButton" Padding="10,0,10,0" Text="Start" Clicked="SomeActionButton_Clicked" Grid.Column="1" Grid.Row="3"/>
         <Button x:Name="SendBinary" Text="Send Binary" Clicked="SendBinary_Clicked" Grid.Column="0" Grid.Row="1"/>
         <Button x:Name="SendMsg" Text="Send Hello" Clicked="SendMsg_Clicked" Grid.Column="2" Grid.Row="1"/>
         <Button x:Name="PublishModeButton" Padding="10" IsVisible="False" Text="Switch to Publish Mode" Clicked="PublishModeButton_Clicked" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" HorizontalOptions="Center"/>
