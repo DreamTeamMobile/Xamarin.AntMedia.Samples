@@ -20,19 +20,21 @@ namespace DT.WebRTC.Forms
 
         private void Current_Ios_IAntMediaClientDelegate_DataReceivedFromDataChannelWithStreamId(object sender, DataEventArgs e)
         {
-            throw new System.NotImplementedException();
+            //receive only from iOS message from all streamId's here, filter by e.StreamId
         }
 
         private void Instance_Android_IDataChannelObserver_OnMessage(object sender, DataEventArgs e)
         {
-            //receive message from all streamId's here, filter by e.StreamId
-            throw new System.NotImplementedException();
+            //receive only from Android message from all streamId's here, filter by e.StreamId
         }
 
         private void AntFrame_DataReceived(object sender, DataEventArgs e)
         {
-            //receive message routed from AntView by special StreamId
-            throw new System.NotImplementedException();
+            //receive for all Platforms message routed from AntView by special StreamId
+            Dispatcher.BeginInvokeOnMainThread(async () =>
+            {
+                await DisplayAlert("DataReceived", e.IsBinary ? "[Binary]" : e.Message, "ОK");
+            });
         }
 
         void SomeActionButton_Clicked(System.Object sender, System.EventArgs e)
