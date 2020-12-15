@@ -1,12 +1,12 @@
 ![](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/raw/main/AntMedia-Banner.jpg)
 # Glad to introduce [Ant Media](https://antmedia.io/) Mobile SDK Xamarin Bindings
-Time to read: 20 min.
+Time to read all: 20 min.
 What you will get from reading this post:
 * What is AntMedia WebRTC SDK
 * Where to get samples, documentation and help on using of SDK
-* How to easy use it on Xamarin Forms
 * How to easy use it on Xamarin Android
 * How to easy use it on Xamarin iOS
+* How to easy use it on Xamarin Forms
 
 ### Small Hint
 All information about Ant Media Server available on creators [Ant Media wiki here](https://github.com/ant-media/Ant-Media-Server/wiki)
@@ -124,9 +124,9 @@ short list if useful links:
 
 Ok, now if you want to use cool video streaming in your app follow this steps.
 
-* Add nuget package [DT.Xamarin.AntMedia.WebRTC.Android](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.Android/) [![NuGet Package](https://buildstats.info/nuget/DT.Xamarin.AntMedia.WebRTC.Android)](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.Android/) to your project
+### Add nuget package [DT.Xamarin.AntMedia.WebRTC.Android](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.Android/) [![NuGet Package](https://buildstats.info/nuget/DT.Xamarin.AntMedia.WebRTC.Android)](https://www.nuget.org/packages/DT.Xamarin.AntMedia.WebRTC.Android/) to your project
 ![add DT.Xamarin.AntMedia.WebRTC.Android to DT.AntMedia.WebRTC.Android](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/wiki/images/AndroidTutorial/Screenshot5.png)
-* Modify Properties/AndroidManifest.xml (Add permissions)
+### Modify Properties/AndroidManifest.xml (Add permissions)
 ```
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.dreamteammobile.antmedia.dt_antmedia_webrtc_android">
@@ -147,7 +147,7 @@ Ok, now if you want to use cool video streaming in your app follow this steps.
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 </manifest>
 ```
-* add view to XML layout
+### add view to XML layout
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -169,7 +169,8 @@ Ok, now if you want to use cool video streaming in your app follow this steps.
         android:layout_height="match_parent" /> 
 </FrameLayout>
 ```
-* in your Activity add code to init WebRTCClient and start streaming. You should add `SERVER_URL` according to your Ant Media Server address. Secondly, the third parameter in the last line of the code below is `WebRTCClientConsts.ModePublish` that publishes the stream to the server. You can use `WebRTCClientConsts.ModeJoin` for playing stream and `WebRTCClientConsts.ModeJoin` for P2P communication. If token control is enabled, you should define `tokenId` parameter.
+## in your Activity add code 
+to init WebRTCClient and start streaming. You should add `SERVER_URL` according to your Ant Media Server address. Secondly, the third parameter in the last line of the code below is `WebRTCClientConsts.ModePublish` that publishes the stream to the server. You can use `WebRTCClientConsts.ModeJoin` for playing stream and `WebRTCClientConsts.ModeJoin` for P2P communication. If token control is enabled, you should define `tokenId` parameter.
 ```csharp
     [Activity(MainLauncher = true)]
     public class MainActivity : Activity, IWebRTCListener
@@ -234,7 +235,7 @@ Ok, now if you want to use cool video streaming in your app follow this steps.
         }
    }
 ```
-* WebRTCClient usage hints
+### WebRTCClient usage hints
 ```java
      
 void WebRTCClient.setOpenFrontCamera(boolean openFrontCamera)
@@ -486,14 +487,14 @@ Also there is IAntMediaClientDelegate interface, which contains events you can h
 ```csharp
 
 public void DataReceivedFromDataChannelWithStreamId(string streamId, NSData data, bool binary)
-        {
-            BeginInvokeOnMainThread(() =>
-            {
-                var controller = UIAlertController.Create("DataReceived on " + streamId, data.ToString(NSStringEncoding.UTF8), UIAlertControllerStyle.Alert);
-                controller.AddAction(UIAlertAction.Create("Ok", UIAlertActionStyle.Destructive, null));
-                PresentViewController(controller, true, null);
-            });
-        }
+{
+    BeginInvokeOnMainThread(() =>
+    {
+        var controller = UIAlertController.Create("DataReceived on " + streamId, data.ToString(NSStringEncoding.UTF8), UIAlertControllerStyle.Alert);
+        controller.AddAction(UIAlertAction.Create("Ok", UIAlertActionStyle.Destructive, null));
+        PresentViewController(controller, true, null);
+    });
+}
         
 ```
 that's all! you can now make iOS apps with AntMedia streaming, here you ca find sources of simple [iOS Sample app](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/tree/main/DT.WebRTC.iOS)
@@ -621,7 +622,7 @@ add reference to framework on page xaml
   </ContentPage>
 ```
   
-Add to Code Behind stream url and token
+Add to Code Behind server url and token
 ```csharp
   
 public partial class MainPage : ContentPage
@@ -630,7 +631,7 @@ public partial class MainPage : ContentPage
    {
       InitializeComponent();
       AntManager.Current.DefaultServer = InitialData.SERVER_URL;
-      AntManager.Current.DefaultToken = InitialData.Token;
+      AntManager.Current.DefaultToken = InitialData.Token; //"" if not set
    }
 ```
 and that is all! Because, if you use simply form and InitMode="InitAndStartOnViewRender" for AntWebRTCView - you can run app and all start-stop and init native events was called on create and on leave page, but you still can Stop manually by calling AntWebRTCView.Stop();
@@ -726,7 +727,7 @@ private void AntFrame_DataReceived(object sender, DataEventArgs e)
 
 **InitAndStartOnViewRender** - 100% automatically mode, start publshing or playing when view renderred. code behind needed to stop and restart only.
 
-all variants of usages for AntWebRTCView you can find in [Documentation](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/wiki/AntWebRTCView)
+all variants of usages for AntWebRTCView you can find in [Wiki](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples/wiki/AntWebRTCView)
 
 that's all! you can now make Android, iOS, Forms-Android and Forms-iOS apps with AntMedia streaming SDK, here you can look to extended sources of simple [Sample app](https://github.com/DreamTeamMobile/Xamarin.AntMedia.Samples), it contains Android, iOS and Forms apps.
 
